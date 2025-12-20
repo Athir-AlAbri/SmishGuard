@@ -38,12 +38,13 @@ This manual is designed for:
 ## System Overview
 
 ### Architecture
-SmishGuard consists of four main components:
+SmishGuard consists of five main components:
 
 1. **Dataset Preprocessing Module**: Prepares and cleans training data
 2. **DistilBERT Model Implementation**: Core AI model for classification
-3. **Model Testing Module**: Validates model performance
-4. **SmishGard Application**: Flask-based web interface
+3. **DistilBERT Model Testing**: Validates DistilBERT model performance
+4. **Other Tested Models**: Additional ML models tested for comparison
+5. **SmishGard Application**: Flask-based web interface
 
 ### Technology Stack
 - **Machine Learning Framework**: PyTorch/TensorFlow with Transformers library
@@ -240,12 +241,16 @@ SmishGuard identifies several phishing indicators:
 
 ## Understanding the Model
 
-### DistilBERT Overview
-DistilBERT is a streamlined version of BERT (Bidirectional Encoder Representations from Transformers):
+### Why DistilBERT?
+SmishGuard uses DistilBERT as the primary model after evaluating multiple alternatives (see `Other Tested Models` directory). DistilBERT was chosen because:
 - 40% smaller than BERT
-- 60% faster
+- 60% faster processing speed
 - Retains 97% of BERT's accuracy
 - Ideal for real-time applications
+- Better balance of performance and efficiency
+
+### Model Comparison
+The project tested various models including traditional machine learning approaches and other transformers. Performance comparisons can be found in the `Other Tested Models` directory, showing why DistilBERT was selected as the optimal solution.
 
 ### How It Works
 
@@ -311,12 +316,27 @@ message,label
 
 ### Running Model Tests
 
-The `DistilBERT Model Testing` directory contains test scripts:
+The `DistilBERT Model Testing` directory contains test scripts for the main model:
 
 ```bash
 cd "DistilBERT Model Testing"
 python test_model.py
 ```
+
+### Testing Other Models
+
+The `Other Tested Models` directory contains alternative model implementations that were evaluated:
+
+```bash
+cd "Other Tested Models"
+# Run specific model tests
+python test_alternative_models.py
+```
+
+This allows comparison between DistilBERT and other approaches such as:
+- Traditional ML models (SVM, Random Forest, Naive Bayes)
+- Other transformer models (BERT, RoBERTa, etc.)
+- Ensemble methods
 
 ### Test Types
 

@@ -17,10 +17,10 @@
 ## Introduction
 
 ### What is SmishGuard?
-SmishGuard is an AI-powered SMS phishing (smishing) detection system that uses advanced machine learning techniques to identify potentially malicious text messages. Built on the DistilBERT natural language processing model and implemented with Flask, SmishGuard provides reliable protection against SMS-based phishing attacks.
+SmishGuard is an ML-powered SMS phishing (smishing) detection system that uses advanced machine learning techniques to identify potentially malicious text messages. Built on the DistilBERT natural language processing model and implemented with Flask, SmishGuard provides reliable protection against SMS-based phishing attacks.
 
 ### Key Features
-- **AI-Powered Detection**: Uses DistilBERT transformer model for accurate smishing detection
+- **ML-Powered Detection**: Uses DistilBERT transformer model for accurate smishing detection
 - **Real-time Analysis**: Instant SMS message classification
 - **High Accuracy**: Trained on comprehensive datasets to minimize false positives
 - **User-Friendly Interface**: Flask-based web interface for easy interaction
@@ -41,7 +41,7 @@ This manual is designed for:
 SmishGuard consists of five main components:
 
 1. **Dataset Preprocessing Module**: Prepares and cleans training data
-2. **DistilBERT Model Implementation**: Core AI model for classification
+2. **DistilBERT Model Implementation**: Core ML model for classification
 3. **DistilBERT Model Testing**: Validates DistilBERT model performance
 4. **Other Models**: Additional ML models tested for comparison
 5. **SmishGard Application**: Flask-based web interface
@@ -523,7 +523,7 @@ A: Regular updates, monitoring performance metrics, and periodic retraining with
 ### Citation
 If you use SmishGuard in research, please cite:
 ```
-SmishGuard: AI-Powered SMS Phishing Detection
+SmishGuard: ML-Powered SMS Phishing Detection
 Athir AlAbri
 GitHub: https://github.com/Athir-AlAbri/SmishGuard
 ```

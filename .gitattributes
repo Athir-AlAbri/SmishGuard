@@ -10,3 +10,4 @@ track filter=lfs diff=lfs merge=lfs -text
 *.onnx filter=lfs diff=lfs merge=lfs -text
 *.pt filter=lfs diff=lfs merge=lfs -text
 *.msgpack filter=lfs diff=lfs merge=lfs -text
+*.pklgit filter=lfs diff=lfs merge=lfs -text

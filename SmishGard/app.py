@@ -1,6 +1,6 @@
 """
 SmishGuard - SMS Phishing Detection System
-Main Flask Application 
+Main Flask Application (Clean & Simple)
 """
 import warnings
 from flask import Flask, request, jsonify, render_template

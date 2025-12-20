@@ -43,7 +43,7 @@ SmishGuard consists of five main components:
 1. **Dataset Preprocessing Module**: Prepares and cleans training data
 2. **DistilBERT Model Implementation**: Core AI model for classification
 3. **DistilBERT Model Testing**: Validates DistilBERT model performance
-4. **Other Tested Models**: Additional ML models tested for comparison
+4. **Other Models**: Additional ML models tested for comparison
 5. **SmishGard Application**: Flask-based web interface
 
 ### Technology Stack
@@ -242,7 +242,7 @@ SmishGuard identifies several phishing indicators:
 ## Understanding the Model
 
 ### Why DistilBERT?
-SmishGuard uses DistilBERT as the primary model after evaluating multiple alternatives (see `Other Tested Models` directory). DistilBERT was chosen because:
+SmishGuard uses DistilBERT as the primary model after evaluating multiple alternatives (see `Other Models` directory). DistilBERT was chosen because:
 - 40% smaller than BERT
 - 60% faster processing speed
 - Retains 97% of BERT's accuracy
@@ -250,7 +250,7 @@ SmishGuard uses DistilBERT as the primary model after evaluating multiple altern
 - Better balance of performance and efficiency
 
 ### Model Comparison
-The project tested various models including traditional machine learning approaches and other transformers. Performance comparisons can be found in the `Other Tested Models` directory, showing why DistilBERT was selected as the optimal solution.
+The project tested various models including traditional machine learning approaches and other transformers. Performance comparisons can be found in the `Other Models` directory, showing why DistilBERT was selected as the optimal solution.
 
 ### How It Works
 
@@ -325,10 +325,10 @@ python test_model.py
 
 ### Testing Other Models
 
-The `Other Tested Models` directory contains alternative model implementations that were evaluated:
+The `Other Models` directory contains alternative model implementations that were evaluated:
 
 ```bash
-cd "Other Tested Models"
+cd "Other Models"
 # Run specific model tests
 python test_alternative_models.py
 ```

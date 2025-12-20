@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block title %}AI Analysis - SmishGuard{% endblock %}
+
+{% block content %}
+<section class="analysis-hero">
+    <div class="container">
+        <h1>AI Message Analyzer</h1>
+        <p>Paste any SMS message below and our AI will analyze it for smishing patterns</p>
+    </div>
+</section>
+
+<section class="analyzer-section">
+    <div class="container">
+        <div class="analyzer-wrapper">
+            <!-- Input Panel -->
+            <div class="input-panel">
+                <div class="panel-header">
+                    <h3>🔍 Enter SMS Message</h3>
+                </div>
+                <div class="input-area">
+                    <textarea id="messageInput" placeholder="Paste your suspicious SMS message here... 
+Example: 'URGENT: Your bank account will be suspended. Click here to verify: http://secure-bank-update.com'" 
+rows="6"></textarea>
+                    
+                    <div class="input-actions">
+                        <button onclick="analyzeMessageML()" class="analyze-btn" id="analyzeBtn">
+                            <span class="btn-text">🤖 Analyze with AI</span>
+                            <span class="btn-loading hidden">Analyzing...</span>
+                        </button>
+                        
+                        <div class="quick-examples">
+                            <p>Try quick examples:</p>
+                            <div class="example-buttons">
+                                <button onclick="loadExample(1)" class="example-btn bank">🏦 Bank Alert</button>
+                                <button onclick="loadExample(2)" class="example-btn delivery">📦 Package Delivery</button>
+                                <button onclick="loadExample(3)" class="example-btn account">🔐 Account Verification</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="results-panel hidden" id="resultsPanel">
+                <div class="panel-header">
+                    <h3>📊 Analysis Results</h3>
+                </div>
+                
+                <!-- Risk Score -->
+                <div class="risk-score-card">
+                    <div class="risk-header">
+                        <h4>Threat Level</h4>
+                        <div class="risk-level" id="riskLevel">Analyzing...</div>
+                    </div>
+                    <div class="risk-visual">
+                        <div class="risk-meter">
+                            <div class="risk-fill" id="riskFill"></div>
+                        </div>
+                        <div class="risk-labels">
+                            <span>Low</span>
+                            <span>Medium</span>
+                            <span>High</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Insights -->
+                <div class="insights-grid">
+                    <div class="insight-card model-card">
+                        <div class="insight-icon">🤖</div>
+                        <h5>AI Model</h5>
+                        <p id="modelUsed">Random Forest</p>
+                    </div>
+                    <div class="insight-card confidence-card">
+                        <div class="insight-icon">📈</div>
+                        <h5>Confidence</h5>
+                        <p id="confidenceText">0%</p>
+                    </div>
+                    <div class="insight-card flags-card">
+                        <div class="insight-icon">🚩</div>
+                        <h5>Red Flags</h5>
+                        <p id="flagsCount">0 detected</p>
+                    </div>
+                </div>
+
+                <!-- Detailed Analysis -->
+                <div class="detailed-analysis">
+                    <h4>Detailed Breakdown</h4>
+                    <div id="flagsList" class="flags-list"></div>
+                    <div id="explanation" class="explanation-box"></div>
+                    <div id="safetyTips" class="safety-tips-box"></div>
+                </div>
+            </div>
+
+            <!-- Action Buttons Section -->
+<div class="action-buttons-section hidden" id="actionButtonsSection">
+    <div class="action-panel">
+        <div class="panel-header">
+            <h3>⚠️ What Action Did You Take?</h3>
+            <p style="margin: 0; font-size: 0.95rem; opacity: 0.9;">Select the action you took after receiving this message to get specific guidance</p>
+        </div>
+        
+        <div class="action-buttons-grid">
+            <button class="action-btn" onclick="selectAction('clicked-link')">
+                <span class="action-icon">🔗</span>
+                <span class="action-label">Clicked on Link</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('revealed-credentials')">
+                <span class="action-icon">🔐</span>
+                <span class="action-label">Revealed Credentials</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('shared-financial')">
+                <span class="action-icon">💳</span>
+                <span class="action-label">Shared Financial Info</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('downloaded-file')">
+                <span class="action-icon">📥</span>
+                <span class="action-label">Downloaded/Installed</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('shared-personal')">
+                <span class="action-icon">🆔</span>
+                <span class="action-label">Shared Personal Info</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('replied-message')">
+                <span class="action-icon">💬</span>
+                <span class="action-label">Replied to Message</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('made-payment')">
+                <span class="action-icon">💸</span>
+                <span class="action-label">Made a Payment</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('scanned-qr')">
+                <span class="action-icon">📱</span>
+                <span class="action-label">Scanned QR Code</span>
+            </button>
+            
+            <button class="action-btn" onclick="selectAction('called-number')">
+                <span class="action-icon">📞</span>
+                <span class="action-label">Called a Number</span>
+            </button>
+            
+            <button class="action-btn no-action" onclick="selectAction('no-action')">
+                <span class="action-icon">✅</span>
+                <span class="action-label">No Action Yet</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Guidelines Section -->
+<div class="guidelines-section hidden" id="guidelinesSection">
+    <div class="guidelines-panel">
+        <div id="guidelineContent">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+</div>
+
+            <!-- Loading State -->
+            <div id="loading" class="loading-panel hidden">
+                <div class="loading-content">
+                    <div class="ai-thinking">
+                        <div class="ai-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <h4>AI is analyzing your message</h4>
+                        <p>Checking for smishing patterns and threat indicators...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works">
+    <div class="container">
+        <h2>How Our AI Detects Smishing</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Text Preprocessing</h4>
+                <p>Cleaning and normalizing the message text for analysis</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Feature Extraction</h4>
+                <p>Identifying URLs, keywords, and linguistic patterns</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>ML Classification</h4>
+                <p>Multiple algorithms analyze the message simultaneously</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Threat Assessment</h4>
+                <p>Generating risk score and safety recommendations</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

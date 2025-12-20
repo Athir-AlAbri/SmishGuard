@@ -1,2 +1,2 @@
-# Environment Variables
-.env.DS_Store
+.env
+.DS_Store

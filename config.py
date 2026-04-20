@@ -21,7 +21,7 @@ class Config:
     VIRUSTOTAL_API_KEY = os.getenv('VIRUSTOTAL_API_KEY')
     
     # Model settings
-    MODEL_PATH = os.getenv('MODEL_PATH', 'distilbert-smishing-final')
+    MODEL_PATH = os.environ.get("MODEL_PATH", "SmishGard/smishguard-distilbert")
     MIN_WORD_LENGTH = int(os.getenv('MIN_WORD_LENGTH', 3))
     
     # LIME settings

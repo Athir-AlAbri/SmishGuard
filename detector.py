@@ -4,7 +4,7 @@ ML-based smishing detection with LIME explainability
 """
 import numpy as np
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
-from lime.lime_text import LimeTextExplainer
+# from lime.lime_text import LimeTextExplainer
 from config import Config
 
 
@@ -34,11 +34,11 @@ class SmishingDetector:
                 tokenizer=self.tokenizer,
                 device=-1
             )
-            self.lime_explainer = LimeTextExplainer(
-                class_names=['ham', 'smishing'],
-                split_expression=r'\W+',
-                bow=False
-            )
+           # self.lime_explainer = LimeTextExplainer(
+            ##    class_names=['ham', 'smishing'],
+              #  split_expression=r'\W+',
+               # bow=False
+           # )
             print("Fine-tuned DistilBERT model loaded successfully!")
             self.model_loaded = True
         except Exception as e:

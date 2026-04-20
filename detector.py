@@ -18,8 +18,16 @@ class SmishingDetector:
         self.model_loaded = False
         
         try:
-            self.model = AutoModelForSequenceClassification.from_pretrained(self.model_path)
-            self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
+            import os
+
+            self.model = AutoModelForSequenceClassification.from_pretrained(
+                self.model_path,
+                token=os.environ.get("HF_TOKEN")
+            )
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                self.model_path,
+                token=os.environ.get("HF_TOKEN")
+            )
             self.classifier = pipeline(
                 "text-classification",
                 model=self.model,

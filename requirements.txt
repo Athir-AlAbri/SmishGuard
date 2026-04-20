@@ -9,7 +9,7 @@ python-dotenv==1.0.0
 
 # Core ML (خفيف ومستقر)
 transformers==4.35.2
-torch==2.1.0
+torch==2.5.0
 
 # أساسيات
 numpy==1.26.4

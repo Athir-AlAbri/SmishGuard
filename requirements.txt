@@ -1,28 +1,24 @@
 --only-binary=:all:
-# Flask Framework
+
+# Flask
 Flask==2.3.3
 Flask-CORS==4.0.0
 
-# Environment Variables
+# Env
 python-dotenv==1.0.0
 
-# Machine Learning & NLP
+# Core ML (خفيف ومستقر)
 transformers==4.35.2
-torch
-scikit-learn
-numpy==1.24.3
-nltk==3.8.1
-datasets==2.14.6
-evaluate==0.4.1
-accelerate==0.24.1
-tokenizers==0.15.0
+torch==2.1.0
 
-# Explainability
-lime==0.2.0.1
-
-# Translation
-deep-translator==1.11.4
-
-# HTTP Requests
+# أساسيات
+numpy==1.26.4
 requests==2.31.0
 
+# NLP
+nltk==3.8.1
+tokenizers==0.15.0
+
+# Optional (شغليها بس لو تستخدمينها فعلاً)
+scikit-learn==1.4.2
+deep-translator==1.11.4

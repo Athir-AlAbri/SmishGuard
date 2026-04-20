@@ -1,17 +1,17 @@
 --only-binary=:all:
 
-Flask==2.3.3
-Flask-CORS==4.0.0
-python-dotenv==1.0.0
+Flask
+Flask-CORS
+python-dotenv
 
-transformers==4.35.2
-torch==2.5.0
+transformers
+torch
 
-numpy==1.26.4
-requests==2.31.0
+numpy
+requests
 
-nltk==3.8.1
-tokenizers==0.15.0
+nltk
+tokenizers
 
-scikit-learn==1.4.2
-deep-translator==1.11.4
+scikit-learn
+deep-translator

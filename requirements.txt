@@ -16,4 +16,4 @@ tokenizers
 scikit-learn
 deep-translator
 
-gunicorn
+gunicorn==21.2.0

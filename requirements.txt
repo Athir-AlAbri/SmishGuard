@@ -15,3 +15,5 @@ tokenizers
 
 scikit-learn
 deep-translator
+
+gunicorn

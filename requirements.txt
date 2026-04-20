@@ -12,5 +12,5 @@ tokenizers
 scikit-learn
 deep-translator
 gunicorn==21.2.0
-lime
+git+https://github.com/marcotcr/lime.git
 scipy
